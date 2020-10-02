@@ -8,7 +8,6 @@ env:
     - ROLE_NAME: apps_postgresql_exporter
   matrix:
     - MOLECULE_DISTRO: ubuntu2004
-    - MOLECULE_DISTRO: ubuntu1804
     - MOLECULE_DISTRO: debian10
 
 before_install:
