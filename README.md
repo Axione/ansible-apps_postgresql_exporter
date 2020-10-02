@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.com/lotusnoir/ansible-apps_postgresql_exporter.svg?branch=master)](https://travis-ci.com/lotusnoir/ansible-apps_postgresql_exporter)[![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)[![Ansible Role](https://img.shields.io/badge/ansible%20role-apps__postgresql_exporter-blue)](https://galaxy.ansible.com/lotusnoir/ansible-apps_postgresql_exporter/)[![GitHub tag](https://img.shields.io/badge/version-latest-blue)](https://github.com/lotusnoir/ansible-apps_postgresql_exporter/tags)
 
-Deploy [postgresql_exporter](https://github.com/boynux/postgresql-exporter) to expose postgresql metrics to prometheus.
+Deploy [postgresql_exporter](https://github.com/wrouesnel/postgres_exporter) to expose postgresql metrics to prometheus.
 
 ## Role variables
 
