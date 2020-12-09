@@ -8,7 +8,8 @@ StartLimitInterval=0
 [Service]
 Type=simple
 Restart=always
-ExecStart=sudo -u postgres DATA_SOURCE_NAME="user=postgres host=/var/run/postgresql/ sslmode=disable" postgres_exporter --web.listen-address=":{{ postgresql_exporter_web_port }}"
+ExecStart=sudo -u postgres DATA_SOURCE_NAME="user=postgres host=/var/run/postgresql/ sslmode=disable" \ 
+          postgres_exporter --web.listen-address=":{{ postgresql_exporter_web_port }}"
 ExecReload=/bin/kill -HUP $MAINPID
 SyslogIdentifier=postgresql_exporter
 RestartSec=1

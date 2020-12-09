@@ -11,6 +11,9 @@ Deploy [postgresql_exporter](https://github.com/wrouesnel/postgres_exporter) to 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
 | `postgresql_exporter_version` | 0.8.0 | postgresql_exporter version |
+| `postgresql_exporter_temp_dir` | /tmp | temporary directory to uncompress package |
+| `postgresql_exporter_install_dir` | /usr/local/bin | directory to install binary |
+| `postgresql_exporter_force_install` | false | force install variable |
 | `postgresql_exporter_web_port` | 9106 | postgresql_exporter listen port |
 
 ## Examples
@@ -29,4 +32,4 @@ Deploy [postgresql_exporter](https://github.com/wrouesnel/postgres_exporter) to 
 
 ## License
 
-This project is licensed under MIT License. See [LICENSE](/LICENSE) for more details.
+This project is licensed under Apache License. See [LICENSE](/LICENSE) for more details.
