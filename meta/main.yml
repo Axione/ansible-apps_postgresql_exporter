@@ -9,10 +9,10 @@ galaxy_info:
   platforms:
     - name: "Ubuntu"
       versions:
-        - "all"
+        - "xenial"
     - name: "Debian"
       versions:
-        - "all"
+        - "buster"
 
   galaxy_tags:
     - postgresql
