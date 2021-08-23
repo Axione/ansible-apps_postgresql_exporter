@@ -1,44 +1,8 @@
 ---
-- name: "End play if distribution not suported"
-  meta: end_host
-  when:
-    - ansible_distribution != "Debian"
-    - ansible_distribution != "Ubuntu"
-    - ansible_distribution != "CentOS"
+### Checks
+- name: Import check tasks
+  import_tasks: check.yml
 
-- name: "Check for postgresql_exporter binary"
-  stat:
-    path: '{{ postgresql_exporter_install_dir }}/postgres_exporter'
-  changed_when: false
-  register: postgresql_exporter_install
-
-- when: not postgresql_exporter_install.stat.exists or postgresql_exporter_force_install|bool
-  block:
-    - name: "Download postgresql_exporter..."
-      get_url:
-        url: '{{ postgresql_exporter_url }}'
-        dest: '{{ postgresql_exporter_temp_dir }}'
-        timeout: '60'
-        mode: '0644'
-
-    - name: "Extract archive"
-      unarchive:
-        src: "{{ postgresql_exporter_temp_dir }}/{{ postgresql_exporter_tgz }}"
-        dest: "{{ postgresql_exporter_install_dir }}"
-        extra_opts: [--strip-components=1]
-        remote_src: true
-        mode: '0755'
-
-- name: "Create systemd for postgresql_exporter"
-  template:
-    src: 'postgresql_exporter.service.j2'
-    dest: '/etc/systemd/system/postgresql_exporter.service'
-    mode: '0640'
-  notify: "restart postgresql_exporter"
-
-- name: "Start postgresql_exporter.service"
-  systemd:
-    name: postgresql_exporter
-    state: started
-    enabled: true
-    daemon_reload: true
+### Install
+- name: Import install tasks
+  import_tasks: install.yml
