@@ -1,7 +1,7 @@
 ---
 # Binary install
-postgresql_exporter_version: "0.8.0"
-postgresql_exporter_tgz: "postgres_exporter_v{{ postgresql_exporter_version }}_linux-amd64.tar.gz"
+postgresql_exporter_version: "0.10.0"
+postgresql_exporter_tgz: "postgres_exporter-{{ postgresql_exporter_version }}.linux-amd64.tar.gz"
 postgresql_exporter_url: "https://github.com/wrouesnel/postgres_exporter/releases/download/v{{ postgresql_exporter_version }}/{{ postgresql_exporter_tgz }}"
 postgresql_exporter_temp_dir: "/tmp"
 postgresql_exporter_install_dir: "/usr/local/bin"
