@@ -17,12 +17,6 @@ galaxy_info:
     - name: "RedHat"
       versions:
         - "Maipo"
-    - name: "CentOS"
-      versions:
-        - "8"
-    - name: "Rocky"
-      versions:
-        - "8"
 
   galaxy_tags:
     - postgresql
