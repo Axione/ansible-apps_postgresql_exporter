@@ -10,13 +10,15 @@ galaxy_info:
     - name: "Ubuntu"
       versions:
         - "focal"
+        - "jammy"
     - name: "Debian"
       versions:
-        - "bullseye"
         - "buster"
-    - name: "RedHat"
+        - "bullseye"
+    - name: "OracleLinux"
       versions:
-        - "Maipo"
+        - "8"
+        - "9"
 
   galaxy_tags:
     - postgresql
