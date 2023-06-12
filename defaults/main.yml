@@ -11,6 +11,7 @@ postgresql_exporter_group: "postgres"
 
 # Systemd options
 postgresql_exporter_web_port: "9187"
+postgresql_exporter_env: ""
 
 #extended queries options
 postgresql_exporter_config_dir: "/etc/prometheus/postgresql_exporter"
