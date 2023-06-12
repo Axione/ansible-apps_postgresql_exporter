@@ -12,7 +12,8 @@ SyslogIdentifier=postgresql_exporter
 User={{ postgresql_exporter_user }}
 Group={{ postgresql_exporter_group }}
 Environment=DATA_SOURCE_NAME="user=postgres host=/var/run/postgresql/ sslmode=disable"
-ExecStart={{ postgresql_exporter_install_dir }}/postgres_exporter --web.listen-address=":{{ postgresql_exporter_web_port }}" {% if postgresql_exporter_extended_queries | length > 0 %}--extend.query-path={{ postgresql_exporter_config_dir }}/extended_queries.yml{% endif %}
+ExecStart={{ postgresql_exporter_install_dir }}/postgres_exporter --web.listen-address=":{{ postgresql_exporter_web_port }}" {% if postgresql_exporter_extended_queries | length > 0 %} --extend.query-path={{ postgresql_exporter_config_dir }}/extended_queries.yml{% endif %}
+
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 RestartSec=5
