@@ -14,3 +14,14 @@
         state: started
         enabled: true
       when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == "9"
+
+  tasks:
+    - name: "create postgresql_exporter group"
+      ansible.builtin.group:
+        name: postgres
+
+    - name: "Create postgresql_exporter user"
+      ansible.builtin.user:
+        name: postgres
+        group: postgres
+        system: true

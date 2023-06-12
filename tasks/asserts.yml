@@ -1,0 +1,21 @@
+---
+- name: "Check if user exists"
+  ansible.builtin.getent:
+    database: passwd
+    key: "{{ postgresql_exporter_user }}"
+    fail_key: false
+  register: check_user
+
+- name: "Check if group exists"
+  ansible.builtin.getent:
+    database: group
+    key: "{{ postgresql_exporter_group }}"
+    fail_key: false
+  register: check_group
+
+- name: "Test if postgresql_exporter user exist"
+  ansible.builtin.assert:
+    that:
+      - check_user.ansible_facts.getent_passwd.{{ postgresql_exporter_user }} != None
+      - check_group.ansible_facts.getent_group.{{ postgresql_exporter_group }} != None
+    fail_msg: "User or group not present."

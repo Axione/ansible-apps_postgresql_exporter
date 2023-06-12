@@ -1,4 +1,7 @@
 ---
+- name: "Import asserts tasks"
+  ansible.builtin.import_tasks: asserts.yml
+
 - name: "Check for postgresql_exporter binary"
   ansible.builtin.stat:
     path: '{{ postgresql_exporter_install_dir }}/postgres_exporter'
@@ -26,14 +29,40 @@
         dest: "{{ postgresql_exporter_install_dir }}"
         extra_opts: [--strip-components=1]
         remote_src: true
+        owner: "root"
+        group: "root"
         mode: '0755'
 
 - name: "Create systemd for postgresql_exporter"
   ansible.builtin.template:
     src: 'postgresql_exporter.service.j2'
     dest: '/etc/systemd/system/postgresql_exporter.service'
+    owner: "root"
+    group: "root"
     mode: '0640'
   notify: "restart postgresql_exporter"
+
+- name: "Extended Queries config tasks"
+  when: postgresql_exporter_extended_queries is defined and postgresql_exporter_extended_queries | length > 0
+  block:
+    - name: "Create installation directory"
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ postgresql_exporter_user }}"
+        group: "{{ postgresql_exporter_group }}"
+        mode: '0755'
+      with_items:
+        - "{{ postgresql_exporter_config_dir }}"
+
+    - name: "Add custom query file"
+      ansible.builtin.template:
+        src: 'extended_queries.yml.j2'
+        dest: '{{ postgresql_exporter_config_dir }}/extended_queries.yml'
+        owner: "{{ postgresql_exporter_user }}"
+        group: "{{ postgresql_exporter_group }}"
+        mode: '0640'
+      notify: "restart postgresql_exporter"
 
 - name: "Start postgresql_exporter.service"
   ansible.builtin.service:
