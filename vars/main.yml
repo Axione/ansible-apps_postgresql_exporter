@@ -1,1 +1,3 @@
 ---
+postgresql_exporter_tgz: "postgres_exporter-{{ postgresql_exporter_version }}.linux-amd64.tar.gz"
+postgresql_exporter_url: "https://github.com/wrouesnel/postgres_exporter/releases/download/v{{ postgresql_exporter_version }}/{{ postgresql_exporter_tgz }}"
