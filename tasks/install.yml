@@ -67,6 +67,6 @@
 - name: "Start postgresql_exporter.service"
   ansible.builtin.service:
     name: postgresql_exporter
-    state: started
-    enabled: true
+    state: "{{ postgresql_exporter_service_state }}"
+    enabled: "{{ postgresql_exporter_service_enabled }}"
     daemon_reload: true

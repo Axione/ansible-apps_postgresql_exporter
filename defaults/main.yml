@@ -7,6 +7,9 @@ postgresql_exporter_force_install: false
 postgresql_exporter_user: "postgres"
 postgresql_exporter_group: "postgres"
 
+postgresql_exporter_service_state: started
+postgresql_exporter_service_enabled: true
+
 # Systemd options
 postgresql_exporter_web_port: "9187"
 postgresql_exporter_env: ""
