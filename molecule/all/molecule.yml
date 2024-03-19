@@ -14,6 +14,15 @@ scenario:
     #- verify
     - destroy
 platforms:
+  - name: apps-postgresql-exporter-ubuntu22
+    pre_build_image: true
+    image: lotusnoir/ansible_molecule_test_images:ubuntu22
+    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    groups:
+      - python3
   - name: apps-postgresql-exporter-ubuntu18
     pre_build_image: true
     image: lotusnoir/ansible_molecule_test_images:ubuntu18
@@ -21,30 +30,21 @@ platforms:
     privileged: true
     capabilities: ['NET_ADMIN']
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  - name: apps-postgresql-exporter-ubuntu22
-    pre_build_image: true
-    image: lotusnoir/ansible_molecule_test_images:ubuntu22
-    docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    groups:
-      - python3
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - name: apps-postgresql-exporter-debian10
     pre_build_image: true
     image: lotusnoir/ansible_molecule_test_images:debian10
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - name: apps-postgresql-exporter-debian11
     pre_build_image: true
     image: lotusnoir/ansible_molecule_test_images:debian11
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
     groups:
       - python3
   - name: apps-postgresql-exporter-debian12
@@ -53,7 +53,7 @@ platforms:
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
     groups:
       - python3
   - name: apps-postgresql-exporter-oraclelinux8
@@ -62,7 +62,7 @@ platforms:
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
     groups:
       - python3
   - name: apps-postgresql-exporter-oraclelinux9
@@ -71,7 +71,7 @@ platforms:
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
     groups:
       - python3
 

@@ -4,7 +4,9 @@
   gather_facts: true
   pre_tasks:
     - name: Update apt cache.
-      ansible.builtin.apt: update_cache=yes cache_valid_time=600
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 600
       when: ansible_os_family == 'Debian'
       changed_when: false
 
@@ -16,7 +18,7 @@
       when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == "9"
 
   tasks:
-    - name: "create postgresql_exporter group"
+    - name: "Create postgresql_exporter group"
       ansible.builtin.group:
         name: postgres
 

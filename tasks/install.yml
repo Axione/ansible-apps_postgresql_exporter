@@ -40,7 +40,7 @@
     owner: "root"
     group: "root"
     mode: '0640'
-  notify: "restart postgresql_exporter"
+  notify: "Restart postgresql_exporter"
 
 - name: "Extended Queries config tasks"
   when: postgresql_exporter_extended_queries is defined and postgresql_exporter_extended_queries | length > 0
@@ -62,7 +62,7 @@
         owner: "{{ postgresql_exporter_user }}"
         group: "{{ postgresql_exporter_group }}"
         mode: '0640'
-      notify: "restart postgresql_exporter"
+      notify: "Restart postgresql_exporter"
 
 - name: "Start postgresql_exporter.service"
   ansible.builtin.service:

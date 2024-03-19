@@ -1,5 +1,5 @@
 ---
-- name: "restart postgresql_exporter"
+- name: "Restart postgresql_exporter"
   ansible.builtin.service:
     name: "postgresql_exporter"
     state: "restarted"
