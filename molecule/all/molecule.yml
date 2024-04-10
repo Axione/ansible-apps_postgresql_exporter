@@ -23,9 +23,9 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     groups:
       - python3
-  - name: apps-postgresql-exporter-ubuntu18
+  - name: apps-postgresql-exporter-ubuntu20
     pre_build_image: true
-    image: lotusnoir/ansible_molecule_test_images:ubuntu18
+    image: lotusnoir/ansible_molecule_test_images:ubuntu20
     docker_host: "${DOCKER_HOST:-unix://var/run/docker.sock}"
     privileged: true
     capabilities: ['NET_ADMIN']
