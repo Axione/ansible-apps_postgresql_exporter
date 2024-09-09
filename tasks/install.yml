@@ -42,27 +42,34 @@
     mode: '0640'
   notify: "Restart postgresql_exporter"
 
-- name: "Extended Queries config tasks"
-  when: postgresql_exporter_extended_queries is defined and postgresql_exporter_extended_queries | length > 0
-  block:
-    - name: "Create installation directory"
-      ansible.builtin.file:
-        path: "{{ item }}"
-        state: directory
-        owner: "{{ postgresql_exporter_user }}"
-        group: "{{ postgresql_exporter_group }}"
-        mode: '0755'
-      with_items:
-        - "{{ postgresql_exporter_config_dir }}"
+- name: "Create installation directory"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ postgresql_exporter_user }}"
+    group: "{{ postgresql_exporter_group }}"
+    mode: '0755'
+  with_items:
+    - "{{ postgresql_exporter_config_dir }}"
 
-    - name: "Add custom query file"
-      ansible.builtin.template:
-        src: 'extended_queries.yml.j2'
-        dest: '{{ postgresql_exporter_config_dir }}/extended_queries.yml'
-        owner: "{{ postgresql_exporter_user }}"
-        group: "{{ postgresql_exporter_group }}"
-        mode: '0640'
-      notify: "Restart postgresql_exporter"
+- name: "Add config file"
+  ansible.builtin.template:
+    src: 'postgres_exporter.yml.j2'
+    dest: '{{ postgresql_exporter_config_dir }}/postgres_exporter.yml'
+    owner: "{{ postgresql_exporter_user }}"
+    group: "{{ postgresql_exporter_group }}"
+    mode: '0640'
+  notify: "Restart postgresql_exporter"
+
+- name: "Add custom query file"
+  ansible.builtin.template:
+    src: 'extended_queries.yml.j2'
+    dest: '{{ postgresql_exporter_config_dir }}/extended_queries.yml'
+    owner: "{{ postgresql_exporter_user }}"
+    group: "{{ postgresql_exporter_group }}"
+    mode: '0640'
+  notify: "Restart postgresql_exporter"
+  when: postgresql_exporter_extended_queries is defined and postgresql_exporter_extended_queries | length > 0
 
 - name: "Start postgresql_exporter.service"
   ansible.builtin.service:
