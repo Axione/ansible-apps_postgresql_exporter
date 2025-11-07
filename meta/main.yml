@@ -4,25 +4,29 @@ galaxy_info:
   role_name: apps_postgresql_exporter
   description: "Deploy [postgresql_exporter](https://github.com/wrouesnel/postgres_exporter) to expose postgresql metrics to prometheus."
   license: "Apache License, Version 2.0"
-  min_ansible_version: 2.8
+  min_ansible_version: "2.8"
 
   platforms:
     - name: "Ubuntu"
       versions:
-        - "jammy"
         - "focal"
+        - "jammy"
+        - "noble"
     - name: "Debian"
       versions:
         - "buster"
         - "bullseye"
         - "bookworm"
+        - "trixie"
     - name: "Rocky"
       versions:
+        - "10"
         - "9"
     - name: "OracleLinux"
       versions:
         - "8"
         - "9"
+        - "10"
     - name: "RedHat"
       versions:
         - "8"

@@ -22,6 +22,7 @@
 ## Description
 
 Deploy [postgresql_exporter](https://github.com/wrouesnel/postgres_exporter) to expose postgresql metrics to prometheus.
+
 ## Requirements
 
 none

@@ -1,5 +1,5 @@
 ---
-# Binary install
+### Binary install
 postgresql_exporter_version: "0.12.0"
 postgresql_exporter_temp_dir: "/tmp"
 postgresql_exporter_install_dir: "/usr/local/bin"
@@ -10,10 +10,10 @@ postgresql_exporter_group: "postgres"
 postgresql_exporter_service_state: started
 postgresql_exporter_service_enabled: true
 
-# Systemd options
+### Systemd options
 postgresql_exporter_web_port: "9187"
 postgresql_exporter_env: ""
 
-#extended queries options
+### extended queries options
 postgresql_exporter_config_dir: "/etc/prometheus/postgresql_exporter"
 postgresql_exporter_extended_queries: ""
